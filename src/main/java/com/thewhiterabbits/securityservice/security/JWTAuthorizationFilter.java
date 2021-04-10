@@ -36,15 +36,17 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
         response.addHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,PATCH,OPTIONS");
         //si requete envoyé avec OPTIONS pas de recherche de token on repond OK car pas encore de token, le navigateur demande juste autorisation cross domain
         if(request.getMethod().equals("OPTIONS")){
+            log.error("enter request OPTION");
             response.setStatus(HttpServletResponse.SC_OK);
             //pas de recherche tokken non plus car accès page pour s'autentifier pas encore de token
         }else if(request.getRequestURI().equals("/login")){
+            log.error("enter request /login");
             filterChain.doFilter(request,response);
             return;
         }
         //sinon recherche du token
         else {
-
+            log.error("enter search token");
             //recup token JWT passé dans la requette client
             String jwt = request.getHeader(SecurityParams.JWT_HEADER_NAME);
             if (jwt == null || !jwt.startsWith(SecurityParams.HEADER_PREFIX)) {

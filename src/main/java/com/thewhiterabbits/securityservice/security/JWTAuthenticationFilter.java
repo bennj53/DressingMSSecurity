@@ -17,11 +17,13 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     private AuthenticationManager authenticationManager;
 
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
+        logger.error("enter JWTAuthenticationFilter");
         this.authenticationManager = authenticationManager;
     }
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
+        logger.error("enter attemptAuthentication");
         return super.attemptAuthentication(request, response);
     }
 }
