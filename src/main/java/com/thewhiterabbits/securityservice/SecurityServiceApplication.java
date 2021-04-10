@@ -2,6 +2,8 @@ package com.thewhiterabbits.securityservice;
 
 import com.thewhiterabbits.securityservice.entity.AppRole;
 import com.thewhiterabbits.securityservice.service.AccountService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,16 +14,16 @@ import java.util.stream.Stream;
 
 @SpringBootApplication
 public class SecurityServiceApplication {
-
+	private static Logger log = LoggerFactory.getLogger(SecurityServiceApplication.class);
 	public static void main(String[] args) {
 
 		SpringApplication.run(SecurityServiceApplication.class, args);
-		System.err.println("-->Running application");
+		log.info("-->Running application");
 	}
 
 	@Bean
 	CommandLineRunner start(AccountService accountService){
-		System.err.println("-->Insert data test in DB");
+		log.info("-->Insert data test in DB");
 		return args -> {
 			accountService.save(new AppRole(null,"USER"));
 			accountService.save(new AppRole(null, "ADMIN"));
@@ -32,7 +34,7 @@ public class SecurityServiceApplication {
 
 	@Bean
 	BCryptPasswordEncoder getBCPE(){
-		System.err.println("-->Init crypt object");
+		log.info("-->Init crypt object");
 		return new BCryptPasswordEncoder();
 	}
 
