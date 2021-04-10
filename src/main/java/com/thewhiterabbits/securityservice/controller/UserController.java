@@ -6,10 +6,9 @@ import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -30,6 +29,11 @@ public class UserController {
         log.error("enter to login controller.......................................");
 
         //return accountService.loadUserByUsername(userForm.getUsername());
+    }
+
+    @GetMapping(path="/users")
+    public List<AppUser> listAppUsers(){
+        return accountService.findAll();
     }
 }
 

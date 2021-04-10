@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -62,5 +63,10 @@ public class AccountServiceImpl implements AccountService{
         AppRole appRole = appRoleRepository.findByRoleName(roleName);
         appUser.getRoles().add(appRole);
         //pas besoin de save car @Transactional, la collection change donc save auto
+    }
+
+    @Override
+    public List<AppUser> findAll() {
+        return appUserRepository.findAll();
     }
 }
