@@ -14,11 +14,14 @@ import java.util.stream.Stream;
 public class SecurityServiceApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(SecurityServiceApplication.class, args);
+		System.err.println("-->Running application");
 	}
 
 	@Bean
 	CommandLineRunner start(AccountService accountService){
+		System.err.println("-->Insert data test in DB");
 		return args -> {
 			accountService.save(new AppRole(null,"USER"));
 			accountService.save(new AppRole(null, "ADMIN"));
@@ -29,6 +32,7 @@ public class SecurityServiceApplication {
 
 	@Bean
 	BCryptPasswordEncoder getBCPE(){
+		System.err.println("-->Init crypt object");
 		return new BCryptPasswordEncoder();
 	}
 
