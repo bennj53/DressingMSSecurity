@@ -12,7 +12,7 @@
 	<artifactId>security-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>security-service</name>
-	<description>JWT authentification service</description>
+	<description>JWT authentication service</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
