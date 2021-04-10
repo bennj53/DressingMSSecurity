@@ -8,17 +8,19 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.stream.Stream;
 
 @SpringBootApplication
+@EnableJpaRepositories(basePackages = "com.thewhiterabbits.securityservice.dao")
 public class SecurityServiceApplication {
 	private static Logger log = LoggerFactory.getLogger(SecurityServiceApplication.class);
 	public static void main(String[] args) {
-
-		SpringApplication.run(SecurityServiceApplication.class, args);
 		log.info("-->Running application");
+		SpringApplication.run(SecurityServiceApplication.class, args);
+
 	}
 
 	@Bean
