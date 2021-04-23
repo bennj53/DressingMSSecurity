@@ -1,0 +1,11 @@
+[
+    {
+      "username": "bennjUser",
+      "actived": "true",
+      "roles":[
+        {
+          "roleName":"USER"
+        }
+      ]
+    }
+]

@@ -6,6 +6,8 @@ import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,9 +21,12 @@ public class UserController {
     private AccountService accountService;
 
     @PostMapping("/register")
-    public AppUser register(@RequestBody UserForm userForm){
+    public ResponseEntity register(@RequestBody UserForm userForm){
         log.error("enter to register controller");
-        return accountService.saveUser(userForm.getUsername(), userForm.getPassword(), userForm.getConfirmedPassword());
+        //return accountService.saveUser(userForm.getUsername(), userForm.getPassword(), userForm.getConfirmedPassword());
+
+        return new ResponseEntity<AppUser>(accountService.saveUser(userForm.getUsername(), userForm.getPassword(), userForm.getConfirmedPassword()), HttpStatus.CREATED);
+
     }
 
     @PostMapping("/login")

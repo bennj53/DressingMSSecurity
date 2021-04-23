@@ -1,0 +1,13 @@
+[
+    {
+      "username": "Boby1",
+      "password": "1234",
+      "confirmedPassword":"1234",
+      "roles":[
+        {
+          "id":1,
+          "roleName":"USER"
+        }
+      ]
+    }
+]
